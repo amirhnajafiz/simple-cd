@@ -1,0 +1,111 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+  	shrink-to-fit=no">
+
+  <title>Note Logs</title>
+
+  {% bootstrap_css %}
+  {% bootstrap_javascript jquery='full' %}
+
+  <style>
+  	#NLmain {
+  		font-size: 20px;
+  		color: #4da6ff;
+  	}
+	body {
+  		background-image: url("{% static 'note_log/index.jpg' %}");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+	}
+  </style>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+
+	  <a class="navbar-brand" href="{% url 'note_logs:index' %}"
+	    id="NLmain">Worlds Of Notes</a>
+
+	  <button class="navbar-toggler" type="button" data-toggle="collapse"
+  	    data-target="#navbarCollapse" aria-controls="navbarCollapse"
+  	    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggle-icon"></span></button>
+      <!-- The followed code will create a button in case 
+        the user uses a smaller device or shrinks the browser page --> 
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+	  <!-- This division represents the links to the pages of the website -->	
+	  <ul class="navbar-nav mr-auto">
+	  	<li class="nav-item">
+	  	  <a class="nav-link" href="{% url 'note_logs:notepads' %}" >
+	  	      Notepads</a></li>
+	  </ul>
+	  <ul class="navbar-nav ml-auto">
+	    {% if user.is_authenticated %}
+	      <li class="nav-item">
+	        <span class="navbar-text" id="NLmain">
+	          Hello, {{ user.username }}.</span>
+	      </li>
+	      <li class="nav-item">
+	      	<a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
+	      </li>
+	    {% else %}  
+	      <li class="nav-item">
+	      	<a class="nav-link" href="{% url 'users:register' %}">Register</a>
+	      </li>
+	      <li class="nav-item">
+	      	<a class="nav-link" href="{% url 'users:login' %}">Log in</a>
+	      </li>	  
+	    {% endif %}
+	  </ul>
+	</div>
+	
+  </nav>
+
+  <main role="main" class="container">
+  <!-- The main part of the pages -->
+    <div class="pb-2 mb-2 border-bottom">
+    <!-- The title of each page -->	
+      {% block page_header %}{% endblock page_header %}
+    </div>
+    <div>
+    <!-- The body part of each web page -->	
+      {% block content %}{% endblock content %}
+    </div>
+  </main>
+
+</body>
+
+<footer style="text-align: center; background-color: rgba(179, 179, 179, 0.5); 
+  position: fixed; bottom: 0%; width:100%; height: 12%;">
+
+  <p style="color: #262626; font-size: 14px">
+  	World Of Notes is a web application that uses python, django framework.
+  	<br />
+  	It is easy to build and its open source, so it can get edited easily.
+  	<br />
+  	Created by "najafizadeh21@gmail.com" or "officialamirhossein21@gmail.com".
+  	<br />
+  	Since Sep 25th 2020.<br />
+  	<span id="time_demo" style="font-size: 14px;">No time access</span>
+
+  	<script>
+	  var d = new Date();
+      document.getElementById("time_demo").innerHTML = d;
+    </script>
+
+  </p>
+  
+</footer>
+
+</html>

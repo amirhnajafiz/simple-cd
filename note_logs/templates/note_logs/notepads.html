@@ -1,0 +1,33 @@
+{% extends 'note_logs/base.html' %}
+
+{% block page_header %}
+  <h1>Notepads </h1>
+{% endblock page_header %}
+
+{% block content %}
+
+  <br />
+  <ul class="list-group">
+  	{% for notepad in notepads %}
+  	  <li class="shadow-lg p-4 mb-4 bg-white">
+        <h5>
+          <big>
+  	  	    <a href="{% url 'note_logs:notepad' notepad.id %}">{{ notepad }}</a>
+          </big>
+          <span class="float-sm-right">
+            {{ notepad.date_added|date:"M d, Y H:i" }}
+          </span>
+  	   </h5>
+     </li> <!-- to declear that this is a variable -->
+  	{% empty %}
+  	  <li><h5>No notepads have been created yet.</h5></li>
+  	{% endfor %}
+  </ul>
+
+  <br />
+  <h3><a href="{% url 'note_logs:new_notepad' %}"
+    class="btn btn-outline-primary" style="font-size: 20px">
+    Add a new notepad</a>
+  </h3>
+
+{% endblock content %}  	  

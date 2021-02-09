@@ -1,0 +1,19 @@
+{% extends "note_logs/base.html" %}
+
+{% block page_header %}
+  <div class="jumbotron">
+  	<h2 class="display-3">Save your memories.</h2>
+
+  	<p class="lead">World Of Notes is a safe place to write and save 
+  		and edit your notes, its simple
+  		and usefull to manage your daily, monthly or even yearly notes.</p>
+
+  	{% if user.is_authenticated %}
+  		<a href="{% url 'note_logs:notepads' %}" class="btn-lg">Go &raquo</a>	
+  	{% else %}
+  	   <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+  	     role="button">Register &raquo;</a>
+  	{% endif %}
+  </div>	
+{% endblock page_header %}
+ 

@@ -1,0 +1,45 @@
+{% extends 'note_logs/base.html' %}
+
+{% block page_header %}
+  <h3>{{ notepad }}</h3>
+{% endblock page_header %}  
+
+{% block content %}
+
+  <p>
+    <a href="{% url 'note_logs:new_note' notepad.id %}" class="btn btn-dark">
+      Add note</a>
+  </p>
+
+  {% for note in notes %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ note.date_added|date:"M d, Y H:i" }}
+      </h4>
+      <div class="card-body"> 
+        {{ note.text|linebreaks }}
+      </div>
+      <div class="card-footer">
+      	<small><a href="{% url 'note_logs:edit_note' note.id %}" 
+      	  class="btn btn-dark">Edit</a></small>
+        <small><a href="{% url 'note_logs:delete_note' note.id %}"
+          class="btn btn-danger">Remove</a></small> 
+        <small>
+        	<span class="float-sm-right">
+        	  <p style="font-size: 15px">
+        		  Last edit: {{ note.date_modify|date:"M d, Y H:i" }}
+        	  </p>
+        	</span>
+        </small>  
+      </div>
+    </div>   
+  {% empty %}
+  	 <p>No notes have been created yet.</p>
+  {% endfor %}
+
+  <p>
+  	<a href="{% url 'note_logs:delete_notepad' notepad.id %}"
+  	  class="btn btn-danger">DELETE NOTEPAD</a>
+  </p>
+
+{% endblock content %}  	  

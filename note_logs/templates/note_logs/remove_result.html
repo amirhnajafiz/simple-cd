@@ -1,0 +1,12 @@
+{% extends 'note_logs/base.html' %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h2>Removing result was: {{ result }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+  <a href="{% url 'note_logs:notepads' %}" class="btn btn-success">Return</a>
+
+{% endblock content %}  
