@@ -15,4 +15,3 @@
   Online Notebook is a web-app which allows you to create your account and then create notepads and notes for yoursefl.<br />
   You can create, edit, or delete a note and notepad :heart_eyes:<br />
 </p>
-
