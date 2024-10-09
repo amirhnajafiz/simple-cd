@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Navigate to the git repository directory
-cd /path/to/your/repository
-
 # Fetch the latest updates from the remote (without merging or pulling)
 git fetch
 
