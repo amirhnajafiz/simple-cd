@@ -1,8 +1,19 @@
 #!/bin/bash
 
-# Source the `.env` file as environment variables, and status codes.
-source config/.env
+# Import required modules.
 source lib/status_codes.sh
+source lib/validator.sh
+
+# Run the validate function to check dependencies.
+if validate; then
+    echo "all directories and files are valid."
+else
+    echo "some directories or files are missing."
+    exit 1 # Exit with an error status.
+fi
+
+# Source the `.env` file as environment variables.
+source config/.env
 
 # Script variables.
 diff="./bin/diff.sh"
