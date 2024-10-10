@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Execute sources.
-source ../pkg/status_codes.sh
+source ../lib/status_codes.sh
 
 # Enter the repository directory.
 cd "$SCD_REPO_PATH"
