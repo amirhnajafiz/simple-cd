@@ -7,6 +7,21 @@ Each instance of `simple-cd`, get the information of a git repository, and the c
 
 ## Running on Kubernetes
 
+```env
+# Repository configs
+SCD_REPO_PATH="logs"
+SCD_REPO_MANIFESTS=""
+
+# Kubernetes API configs
+SCD_KUBE_API="https://api:8080"
+SCD_KUBE_TOKEN="service-account-or-user-token"
+SCD_KUBE_NS="namespace"
+
+# Simple-CD configs
+SCD_INTERVAL=5         # main loop interval time in seconds
+SCD_LOG="logs/log.txt" # the log directory should exists and the process should be able to create files in that directory
+```
+
 ```yml
 apiVersion: v1
 kind: Pod
