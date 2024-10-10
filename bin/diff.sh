@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Import needed modules.
+# Import required modules.
 source lib/status_codes.sh
 
 # Enter the repository directory.
