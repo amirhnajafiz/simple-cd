@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Execute sources.
-source ../lib/status_codes.sh
+# Import needed modules.
+source lib/status_codes.sh
 
 # Enter the repository directory.
 cd "$SCD_REPO_PATH"

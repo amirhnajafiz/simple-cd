@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Import needed modules.
-source status_codes.sh
+source lib/status_codes.sh
 
 # Local variables
 files=("$SCD_LOG" "config/.env")
