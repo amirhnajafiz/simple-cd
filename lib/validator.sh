@@ -4,14 +4,15 @@
 source lib/status_codes.sh
 
 # Local variables
-files=("$SCD_LOG" "config/.env")
-directories=("config" "$SCD_REPO_PATH/" "$SCD_REPO_PATH/$SCD_REPO_MANIFESTS/")
+files=("$SCD_LOG")
+directories=("$SCD_REPO_PATH/" "$SCD_REPO_PATH/$SCD_REPO_MANIFESTS/")
 
 # Check dirs function checks the existance of needed directories.
 check_dirs() {
     # Loop through each directory in the array.
     for dir in "${directories[@]}"; do
         if [ ! -d "$dir" ]; then
+            echo "$dir"
             return $EXIT_FAILED
         fi
     done
@@ -24,6 +25,7 @@ check_files() {
     # Loop through each file in the array.
     for file in "${files[@]}"; do
         if [ ! -f "$file" ]; then
+            echo "$file"
             return $EXIT_FAILED
         fi
     done
