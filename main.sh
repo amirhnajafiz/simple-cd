@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Source the `.env` file as environment variables.
-source config/.env
-
 # Import required modules.
 source lib/status_codes.sh
 source lib/validator.sh
