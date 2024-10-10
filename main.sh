@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Source the `.env` file as environment variables
+# Source the `.env` file as environment variables, and status codes.
 source config/.env
+source pkg/status_codes.sh
 
 # Script variables
 diff="./bin/diff.sh"
