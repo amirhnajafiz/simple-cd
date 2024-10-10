@@ -19,7 +19,8 @@ WORKDIR /app
 COPY . /app
 
 # Give execute permission to the main script
-RUN chmod +x /app/main.sh
+RUN chmod +x /app/main.sh \
+    && chmod +x /app/bin/*.sh
 
 # Define the command to run your main shell script
 CMD ["bash", "/app/main.sh"]
