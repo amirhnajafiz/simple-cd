@@ -9,9 +9,9 @@ source lib/validator.sh
 
 # Run the validate function to check dependencies.
 if validate; then
-    echo "all directories and files are valid."
+    printf "all directories and files are valid.\n"
 else
-    echo "some directories or files are missing."
+    printf "some directories or files are missing."
     exit 1 # Exit with an error status.
 fi
 
@@ -37,12 +37,13 @@ main() {
         # Run the sync script to update resources.
         $sync >>"$SCD_LOG"
 
-    elif [ $tatus -eq $EXIT_FAILED ]; then
+    elif [ $status -eq $EXIT_FAILED ]; then
         echo "failed to run diff script!" >>"$SCD_LOG"
     fi
 }
 
-echo "Simple-CD running ..."
+# Displaying some configs and messages before starting the loop.
+printf "loop interval $SCD_INTERVAL seconds.\nSimple-CD running ...\n"
 
 # The main loop of simple-cd.
 while true; do
