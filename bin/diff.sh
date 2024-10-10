@@ -14,7 +14,7 @@ git fetch || exit $EXIT_FAILED
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git rev-parse @{u})
 
-if [ "$LOCAL" != "$REMOTE" ]; then   
+if [ "$LOCAL" != "$REMOTE" ]; then
     # Now pull the changes since we detected updates.
     # If succesed, it will exit with success code.
     git pull && exit $EXIT_SUCCESS

@@ -9,9 +9,6 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
 
-# Set environment variables (optional, for example, if you have config files)
-ENV CONFIG_PATH="/app/config"
-
 # Create and set the working directory
 WORKDIR /app
 
