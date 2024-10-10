@@ -4,32 +4,36 @@
 source config/.env
 source pkg/status_codes.sh
 
-# Script variables
+# Script variables.
 diff="./bin/diff.sh"
 sync="./bin/sync.sh"
 
 # The main function of simple-cd
 main() {
-    # First it runs the diff script.
-    # Export its logs into log file.
+    # On every main run create a new log entry by printing the date.
+    date >> "$SCD_LOG"
+
+    # First it runs the diff script and export its logs into the log file.
     $diff >> "$SCD_LOG"
 
     # Capture the exit code of diff script
     status=$?
     
-    # Check the exit code
-    if [ $status -eq 0 ]; then
+    # Check the exit code.
+    if [ $status -eq $EXIT_SUCCESS ]; then
         # Run the sync script.
-        $sync
-    elif [ $tatus -eq 1 ]; then
-        echo "failed to run diff script!"
+        echo "syncing the application." >> "$SCD_LOG"
+        $sync >> "$SCD_LOG"
+    elif [ $tatus -eq $EXIT_FAILED ]; then
+        echo "failed to run diff script!" >> "$SCD_LOG"
     fi
 }
 
-# The main loop of simple-cd
+
 echo "Simple-CD running ..."
+# The main loop of simple-cd.
 while true; do
-    # Wait for an interval, then run main function
+    # Wait for an interval, then run main function.
     sleep $SCD_INTERVAL
     main
 done
